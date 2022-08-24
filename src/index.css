@@ -1,13 +1,123 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Merriweather', serif;
+  background-color:#ffeead;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.startDiv{
+  width: 500px;
+  height: 500px;
+  text-align: center;
+}
+
+.title{
+  font-family: 'DynaPuff', cursive;
+  font-size: 3rem;
+  color: #ff6f69;
+}
+
+form {
+  margin: 0;
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+select {
+  background-color: #ffcc5c;
+  font-family: 'Merriweather', serif;
+  margin: 20px 0;
+  width: 70%;
+  min-height: 2em;
+  cursor:pointer;  
+}
+
+.startBtn{
+  margin-top: 20px;
+  color: #ffeead;
+  font-size: 1.1rem;
+  background-color: #ff6f69;
+  border-color: #ffcc5c;
+  width: 10rem;
+  height: 3rem;
+  cursor:pointer;
+  border-radius: 0.5rem;
+}
+
+.quizScreen {
+  height: 700px;
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choices{
+  display: flex;
+  justify-content: space-around;
+}
+
+.choiceBtn:focus, .startBtn:focus, .checkBtn:focus {
+  outline: none;
+}
+
+.choiceLabel:active, .startBtn:active, .checkBtn:active{
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.checkBtn{
+  margin-top:10px;
+  cursor: pointer;
+  color: white;
+  font-size: 1.1rem;
+  background-color: #ff6f69;
+  border-color: #ff6f69;
+  width: 10rem;
+  min-height: 3rem;
+  border-radius: 0.5rem;
+}
+
+.choiceBtn{
+  cursor: pointer;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="radio"]:checked+.choiceLabel
+{
+  background: black;
+}
+
+.choiceLabel {
+  text-align: center;
+  padding: 5px;
+  margin:0;
+  border-radius: 0.5rem;
+  background-color: #96ceb4;
+  border-color: #96ceb4;
+  width: 8rem;
+  min-height: 3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.choiceLabel:hover {
+  background: #DDD;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
