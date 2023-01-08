@@ -13,9 +13,8 @@ const Initial = (props) => {
   };
 
   useEffect(() => {
-    console.log("loading", loading);
     console.log(allQuestions);
-  }, [loading, allQuestions]);
+  }, [allQuestions]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -76,7 +75,7 @@ const Initial = (props) => {
           </form>
         </div>
       ) : (
-        <QuizScreen />
+        <QuizScreen allQuestions={allQuestions}/>
       )}
     </div>
   );

@@ -1,11 +1,10 @@
 import React from 'react';
-import Question from './Question';
+import QABlock from './QABlock';
 
-function QuestionList(props) {
-  const questionElements = props.questions.map((question) => {
+function QuestionList({allQuestions}) {
+  const questionElements = allQuestions.map((question) => {
     return (
-      <Question
-        key={question.id}
+      <QABlock
         answers={question}
       />
     );
@@ -13,7 +12,7 @@ function QuestionList(props) {
 
   return (
     <div>
-      {questionElements}
+      sfgd
     </div>
   );
 }

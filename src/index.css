@@ -9,6 +9,10 @@ a {
   text-decoration: none;
 }
 
+button, input, option, select{
+  cursor: pointer;
+}
+
 body {
   font-family: 'Merriweather', serif;
   background-color:#ffeead;
