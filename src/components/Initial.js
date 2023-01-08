@@ -12,10 +12,6 @@ const Initial = (props) => {
     setCategory({ value: e.target.value });
   };
 
-  useEffect(() => {
-    console.log(allQuestions);
-  }, [allQuestions]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);

@@ -9,13 +9,16 @@ a {
   text-decoration: none;
 }
 
-button, input, option, select{
+button,
+input,
+option,
+select {
   cursor: pointer;
 }
 
 body {
   font-family: 'Merriweather', serif;
-  background-color:#ffeead;
+  background-color: #ffeead;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,13 +26,13 @@ body {
   height: 100vh;
 }
 
-.startDiv{
+.startDiv {
   width: 500px;
   height: 300px;
   text-align: center;
 }
 
-.title{
+.title {
   font-family: 'DynaPuff', cursive;
   font-size: 3rem;
   color: #ff6f69;
@@ -50,10 +53,10 @@ select {
   margin: 20px 0;
   width: 70%;
   min-height: 2em;
-  cursor:pointer;  
+  cursor: pointer;
 }
 
-.startBtn{
+.startBtn {
   margin-top: 20px;
   color: #ffeead;
   font-size: 1.1rem;
@@ -61,7 +64,7 @@ select {
   border-color: #ffcc5c;
   width: 10rem;
   height: 3rem;
-  cursor:pointer;
+  cursor: pointer;
   border-radius: 0.5rem;
 }
 
@@ -73,21 +76,33 @@ select {
   align-items: center;
 }
 
-.choices{
+.quizzes {
+  height: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.choiceBtn:focus, .startBtn:focus, .checkBtn:focus {
+.choices {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.choiceBtn:focus,
+.startBtn:focus,
+.checkBtn:focus {
   outline: none;
 }
 
-.choiceLabel:active, .startBtn:active, .checkBtn:active{
+.choiceLabel:active,
+.startBtn:active,
+.checkBtn:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
-.checkBtn{
-  margin-top:10px;
+.checkBtn {
+  margin-top: 10px;
   cursor: pointer;
   color: white;
   font-size: 1.1rem;
@@ -96,38 +111,6 @@ select {
   width: 10rem;
   min-height: 3rem;
   border-radius: 0.5rem;
-}
-
-.choiceBtn{
-  cursor: pointer;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-input[type="radio"]:checked+.choiceLabel
-{
-  background: black;
-}
-
-.choiceLabel {
-  text-align: center;
-  padding: 5px;
-  margin:0;
-  border-radius: 0.5rem;
-  background-color: #96ceb4;
-  border-color: #96ceb4;
-  width: 8rem;
-  min-height: 3rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.choiceLabel:hover {
-  background: #DDD;
 }
 
 input {
@@ -161,9 +144,8 @@ input {
 }
 
 .loader-line-wrap {
-  animation: 
-  spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite
-  ;
+  animation:
+    spin 2000ms cubic-bezier(.175, .885, .32, 1.275) infinite;
   box-sizing: border-box;
   height: 50px;
   left: 0;
@@ -173,6 +155,7 @@ input {
   transform-origin: 50% 100%;
   width: 100px;
 }
+
 .loader-line {
   border: 4px solid transparent;
   border-radius: 100%;
@@ -185,11 +168,26 @@ input {
   top: 0;
   width: 100px;
 }
-.loader-line-wrap:nth-child(1) { animation-delay: -50ms; }
-.loader-line-wrap:nth-child(2) { animation-delay: -100ms; }
-.loader-line-wrap:nth-child(3) { animation-delay: -150ms; }
-.loader-line-wrap:nth-child(4) { animation-delay: -200ms; }
-.loader-line-wrap:nth-child(5) { animation-delay: -250ms; }
+
+.loader-line-wrap:nth-child(1) {
+  animation-delay: -50ms;
+}
+
+.loader-line-wrap:nth-child(2) {
+  animation-delay: -100ms;
+}
+
+.loader-line-wrap:nth-child(3) {
+  animation-delay: -150ms;
+}
+
+.loader-line-wrap:nth-child(4) {
+  animation-delay: -200ms;
+}
+
+.loader-line-wrap:nth-child(5) {
+  animation-delay: -250ms;
+}
 
 .loader-line-wrap:nth-child(1) .loader-line {
   border-color: hsl(0, 80%, 60%);
@@ -197,24 +195,28 @@ input {
   width: 90px;
   top: 7px;
 }
+
 .loader-line-wrap:nth-child(2) .loader-line {
   border-color: hsl(60, 80%, 60%);
   height: 76px;
   width: 76px;
   top: 14px;
 }
+
 .loader-line-wrap:nth-child(3) .loader-line {
   border-color: hsl(120, 80%, 60%);
   height: 62px;
   width: 62px;
   top: 21px;
 }
+
 .loader-line-wrap:nth-child(4) .loader-line {
   border-color: hsl(180, 80%, 60%);
   height: 48px;
   width: 48px;
   top: 28px;
 }
+
 .loader-line-wrap:nth-child(5) .loader-line {
   border-color: hsl(240, 80%, 60%);
   height: 34px;
@@ -223,10 +225,13 @@ input {
 }
 
 @keyframes spin {
-  0%, 15% {
-  transform: rotate(0);
-}
-100% {
-  transform: rotate(360deg);
-}
+
+  0%,
+  15% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
