@@ -50,6 +50,18 @@ const QABlock = ({ allQuestions }) => {
     );
   };
 
+  const decodeHTMLEntities = (str) => {
+    const decoded = str
+      .replace(/&quot;/g, '"')
+      .replace(/&#039;/g, "'")
+      .replace(/&apos;/g, "'")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">");
+
+    return decoded;
+  };
+
   const qaElements = allQuestions.map((qaElement, index) => {
     const answersArray = qaElement.answers;
     const answerBlocks = answersArray.map((answerBlock) => {
@@ -90,9 +102,11 @@ const QABlock = ({ allQuestions }) => {
       );
     });
 
+    const decodedQ = decodeHTMLEntities(qaElement.question);
+
     return (
       <div className="qaBlock">
-        <h3>{qaElement.question}</h3>
+        <h3>{decodedQ}</h3>
         <div className="choices">{answerBlocks}</div>
       </div>
     );
