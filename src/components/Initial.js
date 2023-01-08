@@ -7,6 +7,7 @@ const Initial = (props) => {
   const [loading, setLoading] = useState(false);
   const [isFetched, setIsFetched] = useState(false);
   const [allQuestions, setAllQuestions] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   const handleChange = (e) => {
     setCategory({ value: e.target.value });
@@ -71,7 +72,7 @@ const Initial = (props) => {
           </form>
         </div>
       ) : (
-        <QuizScreen allQuestions={allQuestions}/>
+        <QuizScreen handleSubmit={handleSubmit} allQuestions={allQuestions}/>
       )}
     </div>
   );

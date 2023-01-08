@@ -57,6 +57,9 @@ const QABlock = ({ allQuestions }) => {
       .replace(/&apos;/g, "'")
       .replace(/&amp;/g, "&")
       .replace(/&lt;/g, "<")
+      .replace(/&eacute;/g, "é")
+      .replace(/&rsquo;/g, "'")
+      .replace(/&Delta;/g, "Δ")
       .replace(/&gt;/g, ">");
 
     return decoded;
@@ -79,12 +82,15 @@ const QABlock = ({ allQuestions }) => {
         borderColor: "#96ceb4",
         width: "8rem",
         minHeight: "3rem",
+        marginTop: "20px",
         cursor: "pointer",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       };
 
+      const decodedA = decodeHTMLEntities(answerBlock.answer);
+      
       return (
         <div className="choice">
           <button
@@ -96,7 +102,7 @@ const QABlock = ({ allQuestions }) => {
             name={index}
             value={answerBlock.answer}
           >
-            {answerBlock.answer}
+            {decodedA}
           </button>
         </div>
       );

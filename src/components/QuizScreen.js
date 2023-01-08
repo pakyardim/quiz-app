@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import QABlock from "./QABlock";
-import { nanoid } from "nanoid";
 
-const QuizScreen = ({ allQuestions }) => {
+const QuizScreen = ({ handleSubmit, allQuestions }) => {
+  
   const formattedAnswers = (correctAnswer, incorrectAnswers) => {
     return [
       {
@@ -19,7 +19,10 @@ const QuizScreen = ({ allQuestions }) => {
   };
 
   const allQF = allQuestions.map((question) => {
-    const answersArr = formattedAnswers(question.correct_answer, question.incorrect_answers);
+    const answersArr = formattedAnswers(
+      question.correct_answer,
+      question.incorrect_answers
+    );
 
     return {
       ...question,
@@ -27,12 +30,16 @@ const QuizScreen = ({ allQuestions }) => {
     };
   });
 
+
   return (
     <div className="quizScreen">
       <div className="quizzes">
         <QABlock allQuestions={allQF} />
       </div>
-      <button className="checkBtn">Check Answer</button>
+      <div className="buttons">
+        <button className="checkBtn">Check Answer</button>
+        <button onClick={handleSubmit} className="refBtn">⟳</button>
+      </div>
     </div>
   );
 };

@@ -22,7 +22,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   height: 100vh;
 }
 
@@ -69,7 +68,6 @@ select {
 }
 
 .quizScreen {
-  height: 700px;
   width: 800px;
   display: flex;
   flex-direction: column;
@@ -101,14 +99,31 @@ select {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
+.buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
 .checkBtn {
   margin-top: 10px;
-  cursor: pointer;
+  
   color: white;
   font-size: 1.1rem;
   background-color: #ff6f69;
   border-color: #ff6f69;
   width: 10rem;
+  min-height: 3rem;
+  border-radius: 0.5rem;
+}
+
+.refBtn{
+  font-size: 1.1rem;
+  background-color: #ff6f69;
+  border-color: #ff6f69;
+  color: black;
+  width: 3rem;
   min-height: 3rem;
   border-radius: 0.5rem;
 }
