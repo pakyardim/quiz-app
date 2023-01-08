@@ -53,12 +53,15 @@ const QABlock = ({ allQuestions }) => {
   const decodeHTMLEntities = (str) => {
     const decoded = str
       .replace(/&quot;/g, '"')
+      .replace(/&ldquo;/g, '“')
+      .replace(/&rdquo;/g, '”')
       .replace(/&#039;/g, "'")
       .replace(/&apos;/g, "'")
       .replace(/&amp;/g, "&")
       .replace(/&lt;/g, "<")
       .replace(/&eacute;/g, "é")
-      .replace(/&rsquo;/g, "'")
+      .replace(/&rsquo;/g, "’")
+      .replace(/&lsquo;/g, "‘")
       .replace(/&Delta;/g, "Δ")
       .replace(/&gt;/g, ">");
 
@@ -90,7 +93,7 @@ const QABlock = ({ allQuestions }) => {
       };
 
       const decodedA = decodeHTMLEntities(answerBlock.answer);
-      
+
       return (
         <div className="choice">
           <button

@@ -134,6 +134,11 @@ input {
   appearance: none;
 }
 
+.easter{
+  font-size: 0.5rem;
+  color: #93780f;
+}
+
 
 /* LOADING SCREEN */
 
