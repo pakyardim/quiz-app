@@ -20,10 +20,13 @@ const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
   const handleClick = (e) => {
     setSelectedOptions((prevOptions) =>
       prevOptions.map((option) => {
-        if (option.id == e.target.name) {
-          return { ...option, value: e.target.value };
+        if (!checkAnswerTrigger) {
+          if (option.id == e.target.name) {
+            return { ...option, value: e.target.value };
+          }
+          return option;
+        } else {
         }
-        return option;
       })
     );
 
@@ -73,34 +76,53 @@ const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
     return decoded;
   };
 
-  //selectedOptions[index].value ===
+
+  const getButtonStyles = (answerBlock, selectedOption, hoveredOption) => {
+    const { correct, answer } = answerBlock;
+    let backgroundColor;
+
+    if (checkAnswerTrigger) {
+      backgroundColor = correct
+        ? "green"
+        : selectedOption !== answer
+        ? "#96ceb4"
+        : "red";
+    } else {
+      backgroundColor =
+        selectedOption === answer
+          ? "blue"
+          : hoveredOption === answer
+          ? "#DDD"
+          : "#96ceb4";
+    }
+    return {
+      backgroundColor,
+      color: "white",
+      textAlign: "center",
+      padding: "5px",
+      borderRadius: "0.5rem",
+      borderColor: "#96ceb4",
+      width: "8rem",
+      minHeight: "3rem",
+      marginTop: "20px",
+      cursor: "pointer",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    };
+  };
 
   const qaElements = allQuestions.map((qaElement, index) => {
-    const answersArray = qaElement.answers;
-    const answerBlocks = answersArray.map((answerBlock) => {
-      const buttonStyles = {
-        backgroundColor: checkAnswerTrigger
-          ? answerBlock.correct
-            ? "green"
-            : "red"
-          : selectedOptions[index].value === answerBlock.answer
-          ? "blue"
-          : hoveredOptions[index].value === answerBlock.answer
-          ? "#DDD"
-          : "#96ceb4",
-        color: "white",
-        textAlign: "center",
-        padding: "5px",
-        borderRadius: "0.5rem",
-        borderColor: "#96ceb4",
-        width: "8rem",
-        minHeight: "3rem",
-        marginTop: "20px",
-        cursor: "pointer",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      };
+    const { question, answers } = qaElement;
+    const decodedQ = decodeHTMLEntities(question);
+    const selectedOption = selectedOptions[index].value;
+    const hoveredOption = hoveredOptions[index].value;
+    const answerBlocks = answers.map((answerBlock) => {
+      const buttonStyles = getButtonStyles(
+        answerBlock,
+        selectedOption,
+        hoveredOption
+      );
 
       const decodedA = decodeHTMLEntities(answerBlock.answer);
 
@@ -120,8 +142,6 @@ const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
         </div>
       );
     });
-
-    const decodedQ = decodeHTMLEntities(qaElement.question);
 
     return (
       <div className="qaBlock">
