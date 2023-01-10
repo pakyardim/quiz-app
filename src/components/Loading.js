@@ -3,7 +3,7 @@ import { easterEgg } from "../easteregg";
 
 const Loading = () => {
   const randomIndex = Math.floor(Math.random() * easterEgg.length);
-  const randomText = easterEgg[7].text;
+  const randomText = easterEgg[randomIndex].text;
 
   return (
     <div class="loader">

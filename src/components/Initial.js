@@ -28,6 +28,35 @@ const Initial = (props) => {
       .then(() => setIsFetched(true))
   };
 
+  const formattedAnswers = (correctAnswer, incorrectAnswers) => {
+    return [
+      {
+        selected: false,
+        correct: true,
+        answer: correctAnswer,
+      },
+      ...incorrectAnswers.map((incorrectAnswer) => ({
+        selected: false,
+        correct: false,
+        answer: incorrectAnswer,
+      })),
+    ].sort(() => (Math.random() > 0.5 ? 1 : -1));
+  };
+
+  const allQF = allQuestions.map((question) => {
+    const answersArr = formattedAnswers(
+      question.correct_answer,
+      question.incorrect_answers
+    );
+
+    return {
+      ...question,
+      answers: answersArr,
+    };
+  });
+
+
+
   return (
     <div>
       {loading ? <Loading/> : !isFetched ? (
@@ -72,7 +101,7 @@ const Initial = (props) => {
           </form>
         </div>
       ) : (
-        <QuizScreen handleSubmit={handleSubmit} allQuestions={allQuestions}/>
+        <QuizScreen handleSubmit={handleSubmit} allQuestions={allQF}/>
       )}
     </div>
   );
