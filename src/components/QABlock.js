@@ -76,7 +76,6 @@ const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
     return decoded;
   };
 
-
   const getButtonStyles = (answerBlock, selectedOption, hoveredOption) => {
     const { correct, answer } = answerBlock;
     let backgroundColor;
