@@ -2,13 +2,10 @@ import React from "react";
 import Initial from "./components/Initial";
 
 function App() {
-
-  
-
   return (
-      <div className="App">
-        <Initial/>
-      </div>
+    <div className="App">
+      <Initial />
+    </div>
   );
 }
 

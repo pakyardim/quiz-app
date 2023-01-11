@@ -87,7 +87,6 @@ select {
   margin-bottom: 20px;
 }
 
-.choiceBtn:focus,
 .startBtn:focus,
 .checkBtn:focus {
   outline: none;

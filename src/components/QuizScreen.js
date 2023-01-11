@@ -3,6 +3,8 @@ import QABlock from "./QABlock";
 
 const QuizScreen = ({ handleSubmit, allQuestions }) => {
   const [checkAnswerTrigger, setCheckAnswerTrigger] = useState(false);
+  
+
 
   const handleClick = () => {
     setCheckAnswerTrigger(true);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import QuizScreen from "./QuizScreen";
 import Loading from "./Loading";
 
@@ -7,7 +7,6 @@ const Initial = (props) => {
   const [loading, setLoading] = useState(false);
   const [isFetched, setIsFetched] = useState(false);
   const [allQuestions, setAllQuestions] = useState([]);
-  const [refresh, setRefresh] = useState(false);
 
   const handleChange = (e) => {
     setCategory({ value: e.target.value });
@@ -54,8 +53,6 @@ const Initial = (props) => {
       answers: answersArr,
     };
   });
-
-
 
   return (
     <div>

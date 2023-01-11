@@ -1,4 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
+
+const Button = styled.button`
+background-color: ${props => props.backgroundColor};
+color: white;
+text-align: center;
+padding: 5px;
+border-radius: 0.5rem;
+border-color: #96ceb4;
+width: 8rem;
+min-height: 3rem;
+margin-top: 20px;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+
+&:hover {
+  background-color: #DDD;
+}
+
+`
 
 const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
   const [selectedOptions, setSelectedOptions] = useState([
@@ -9,52 +31,21 @@ const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
     { id: 4, value: null },
   ]);
 
-  const [hoveredOptions, setHoveredOptions] = useState([
-    { id: 0, value: null },
-    { id: 1, value: null },
-    { id: 2, value: null },
-    { id: 3, value: null },
-    { id: 4, value: null },
-  ]);
-
   const handleClick = (e) => {
-    setSelectedOptions((prevOptions) =>
-      prevOptions.map((option) => {
-        if (!checkAnswerTrigger) {
-          if (option.id == e.target.name) {
-            return { ...option, value: e.target.value };
+    if(!checkAnswerTrigger){
+      setSelectedOptions((prevOptions) =>
+        prevOptions.map((option) => {
+          if (!checkAnswerTrigger) {
+            if (option.id == e.target.name) {
+              return { ...option, value: e.target.value };
+            }
+            return option;
           }
-          return option;
-        } else {
-        }
-      })
-    );
-
+        })
+      );
+      
+    }
     return;
-  };
-
-  const handleOnMouseEnter = (e) => {
-    setHoveredOptions((prevOptions) =>
-      prevOptions.map((option) => {
-        if (option.id == e.target.name) {
-          return { ...option, value: e.target.value };
-        }
-        return option;
-      })
-    );
-
-    return;
-  };
-
-  const handleOnMouseLeave = (e) => {
-    setHoveredOptions((prevOptions) =>
-      prevOptions.map((option) => {
-        if (option.id == e.target.name) {
-          return { ...option, value: null };
-        }
-        return option;
-      })
-    );
   };
 
   const decodeHTMLEntities = (str) => {
@@ -76,7 +67,7 @@ const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
     return decoded;
   };
 
-  const getButtonStyles = (answerBlock, selectedOption, hoveredOption) => {
+  const getButtonStyles = (answerBlock, selectedOption) => {
     const { correct, answer } = answerBlock;
     let backgroundColor;
 
@@ -86,58 +77,35 @@ const QABlock = ({ checkAnswerTrigger, allQuestions }) => {
         : selectedOption !== answer
         ? "#96ceb4"
         : "red";
-    } else {
-      backgroundColor =
-        selectedOption === answer
-          ? "blue"
-          : hoveredOption === answer
-          ? "#DDD"
-          : "#96ceb4";
+    }else{
+      backgroundColor = selectedOption === answer ? "blue" : "#96ceb4"
     }
-    return {
-      backgroundColor,
-      color: "white",
-      textAlign: "center",
-      padding: "5px",
-      borderRadius: "0.5rem",
-      borderColor: "#96ceb4",
-      width: "8rem",
-      minHeight: "3rem",
-      marginTop: "20px",
-      cursor: "pointer",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-    };
+    return backgroundColor; 
   };
 
   const qaElements = allQuestions.map((qaElement, index) => {
     const { question, answers } = qaElement;
     const decodedQ = decodeHTMLEntities(question);
     const selectedOption = selectedOptions[index].value;
-    const hoveredOption = hoveredOptions[index].value;
     const answerBlocks = answers.map((answerBlock) => {
-      const buttonStyles = getButtonStyles(
+      const backgroundColor = getButtonStyles(
         answerBlock,
         selectedOption,
-        hoveredOption
       );
 
       const decodedA = decodeHTMLEntities(answerBlock.answer);
 
       return (
         <div className="choice">
-          <button
-            style={buttonStyles}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
+          <Button
+            backgroundColor={backgroundColor}
             onClick={handleClick}
             className="choiceBtn"
             name={index}
             value={answerBlock.answer}
           >
             {decodedA}
-          </button>
+          </Button>
         </div>
       );
     });
